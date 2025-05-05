@@ -34,6 +34,8 @@ public class QReadingNote extends EntityPathBase<ReadingNote> {
 
     public final StringPath noteStatus = createString("noteStatus");
 
+    public final StringPath status = createString("status");
+
     public final DateTimePath<java.time.LocalDateTime> updatedAt = createDateTime("updatedAt", java.time.LocalDateTime.class);
 
     public final QUser user;

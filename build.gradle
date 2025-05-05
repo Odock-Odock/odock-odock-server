@@ -63,6 +63,10 @@ dependencies {
 
 	// ModelMapper
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.4.2'
+
+	// XML 을 JSON 으로 처리
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+
 }
 
 tasks.named('test') {

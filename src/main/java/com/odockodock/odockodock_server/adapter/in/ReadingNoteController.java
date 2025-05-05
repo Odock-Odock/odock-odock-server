@@ -46,6 +46,13 @@ public class ReadingNoteController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/draft")
+    public List<ReadingNote> draft(){
+        User user = userRepository.findByUserId(userId)
+                .orElseThrow(() -> new RuntimeException("사용자 없음"));
+        return  readingNoteUserCase.draft(user);
+    }
+
     @DeleteMapping("/{noteId}")
     public ResponseEntity<?> delete(@PathVariable("noteId") Long noteId) {
         readingNoteUserCase.delete(noteId);

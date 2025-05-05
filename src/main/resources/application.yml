@@ -44,3 +44,8 @@ spring:
 jwt:
   secret: ${JWT_SECRET}
   expiration-time: ${JWT_EXPIRATION}
+
+external:
+  api:
+    library-key: ${LIBRARY_API_KEY}
+

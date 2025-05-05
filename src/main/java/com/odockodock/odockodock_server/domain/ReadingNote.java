@@ -27,6 +27,7 @@ public class ReadingNote {
     private LocalDateTime createdAt;
     @LastModifiedDate
     private LocalDateTime updatedAt;
+    private String status; // DRAFT , FINAL
     private String bookTitle;
     private String bookThumbnail;
 

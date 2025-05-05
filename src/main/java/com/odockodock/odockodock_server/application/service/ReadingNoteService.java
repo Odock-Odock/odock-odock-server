@@ -5,11 +5,11 @@ import com.odockodock.odockodock_server.adapter.out.UserRepository;
 import com.odockodock.odockodock_server.application.port.in.ReadingNoteUserCase;
 import com.odockodock.odockodock_server.application.port.out.ReadingNoteRespositoryPort;
 import com.odockodock.odockodock_server.domain.ReadingNote;
+import com.odockodock.odockodock_server.domain.User;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Book;
 import java.util.List;
 
 @Service
@@ -48,6 +48,10 @@ public class ReadingNoteService implements ReadingNoteUserCase {
         readingNoteRespositoryPort.delete(noteId);
     }
 
+    @Override
+    public List<ReadingNote> draft(User user) {
+        return  readingNoteRespositoryPort.draft(user);
+    }
 
 
 }
