@@ -1,4 +1,4 @@
-package com.odockodock.odockodock_server.controller;
+package com.odockodock.odockodock_server;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

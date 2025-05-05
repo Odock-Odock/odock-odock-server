@@ -1,5 +1,6 @@
 package com.odockodock.odockodock_server.application.service;
 
+import com.odockodock.odockodock_server.Exception.BookNotFoundException;
 import com.odockodock.odockodock_server.adapter.out.UserRepository;
 import com.odockodock.odockodock_server.application.port.in.ReadingNoteUserCase;
 import com.odockodock.odockodock_server.application.port.out.ReadingNoteRespositoryPort;
@@ -8,12 +9,12 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ReadingNoteService implements ReadingNoteUserCase {
-
 
     private final ReadingNoteRespositoryPort readingNoteRespositoryPort;
 
@@ -33,7 +34,7 @@ public class ReadingNoteService implements ReadingNoteUserCase {
     public void update(ReadingNote readingNote) {
 
             ReadingNote existing = readingNoteRespositoryPort.findByNoteId(readingNote.getNoteId())
-                    .orElseThrow(() -> new RuntimeException("not found"));
+                    .orElseThrow(() -> new BookNotFoundException("해당 책이 존재하지 않습니다"));
 
         readingNote.setCreatedAt(existing.getCreatedAt()); // ⭐ 반드시 기존 값 복원
         readingNoteRespositoryPort.update(readingNote);
@@ -42,7 +43,7 @@ public class ReadingNoteService implements ReadingNoteUserCase {
     @Transactional
     public void delete(Long noteId) {
         ReadingNote note = readingNoteRespositoryPort.findByNoteId(noteId)
-                .orElseThrow(() -> new RuntimeException("글을 찾을 수 없습니다."));
+                .orElseThrow(() -> new BookNotFoundException("해당 책이 존재하지 않습니다"));
 
         readingNoteRespositoryPort.delete(noteId);
     }

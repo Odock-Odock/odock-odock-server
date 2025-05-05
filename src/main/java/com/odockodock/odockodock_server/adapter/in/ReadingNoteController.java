@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RestControllerAdvice // = @ControllerAdvice + @ResponseBody
+@RestController // = @ControllerAdvice + @ResponseBody
 @RequestMapping("/reading-note")
 public class ReadingNoteController {
 
