@@ -22,17 +22,18 @@ public class ReadingNote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long noteId;
     private String noteContent;
-    private String noteStatus;
+    private String noteTag; // REVIEW , QUOTE
     @CreatedDate
     private LocalDateTime createdAt;
     @LastModifiedDate
     private LocalDateTime updatedAt;
-    private String status; // DRAFT , FINAL
-    private String bookTitle;
-    private String bookThumbnail;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 
 }

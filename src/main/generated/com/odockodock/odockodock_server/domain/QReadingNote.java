@@ -22,9 +22,7 @@ public class QReadingNote extends EntityPathBase<ReadingNote> {
 
     public static final QReadingNote readingNote = new QReadingNote("readingNote");
 
-    public final StringPath bookThumbnail = createString("bookThumbnail");
-
-    public final StringPath bookTitle = createString("bookTitle");
+    public final QBook book;
 
     public final DateTimePath<java.time.LocalDateTime> createdAt = createDateTime("createdAt", java.time.LocalDateTime.class);
 
@@ -32,9 +30,7 @@ public class QReadingNote extends EntityPathBase<ReadingNote> {
 
     public final NumberPath<Long> noteId = createNumber("noteId", Long.class);
 
-    public final StringPath noteStatus = createString("noteStatus");
-
-    public final StringPath status = createString("status");
+    public final StringPath noteTag = createString("noteTag");
 
     public final DateTimePath<java.time.LocalDateTime> updatedAt = createDateTime("updatedAt", java.time.LocalDateTime.class);
 
@@ -58,6 +54,7 @@ public class QReadingNote extends EntityPathBase<ReadingNote> {
 
     public QReadingNote(Class<? extends ReadingNote> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.book = inits.isInitialized("book") ? new QBook(forProperty("book")) : null;
         this.user = inits.isInitialized("user") ? new QUser(forProperty("user")) : null;
     }
 

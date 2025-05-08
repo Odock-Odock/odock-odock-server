@@ -48,4 +48,6 @@ jwt:
 external:
   api:
     library-key: ${LIBRARY_API_KEY}
-
+    consumer-key: ${CONSUMER_KEY}
+    consumer-secret: ${CONSUMER_SECRET_KEY}
+    base-url: https://korea-webtoon-api-cc7dda2f0d77.herokuapp.com/

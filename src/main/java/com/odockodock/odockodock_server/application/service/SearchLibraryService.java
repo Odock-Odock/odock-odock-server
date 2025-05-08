@@ -2,6 +2,7 @@ package com.odockodock.odockodock_server.application.service;
 
 import com.odockodock.odockodock_server.application.port.in.SearchLibraryUseCase;
 import com.odockodock.odockodock_server.application.port.out.LoadLibraryPort;
+import com.odockodock.odockodock_server.domain.Book;
 import com.odockodock.odockodock_server.domain.Library;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,4 +20,15 @@ public class SearchLibraryService implements SearchLibraryUseCase {
         System.out.println(loadLibraryPort.loadLibraries(region, dtlRegion));
         return loadLibraryPort.loadLibraries(region, dtlRegion);
     }
+
+    @Override
+    public String provideAccessToken() {
+        return loadLibraryPort.getAccessToken();
+    }
+
+    @Override
+    public List<Book> bookSearch(String keyword, int pageNo, int pageSize) {
+        return loadLibraryPort.getBookList(keyword, pageNo, pageSize);
+    }
+
 }
